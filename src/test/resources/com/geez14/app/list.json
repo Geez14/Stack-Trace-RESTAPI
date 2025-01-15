@@ -1,0 +1,20 @@
+[
+  {
+    "id": 100,
+    "title": "First Activity",
+    "description": "Some Common Description1",
+    "owner": "Mxtylish"
+  },
+  {
+    "id": 101,
+    "title": "Second Activity",
+    "description": "Some Common Description2",
+    "owner": "Mxtylish"
+  },
+  {
+    "id": 102,
+    "title": "Third Activity",
+    "description": "Some Common Description3",
+    "owner": "Mxtylish"
+  }
+]
