@@ -58,10 +58,8 @@ The application was designed and developed using the **Steel Thread approach**, 
 **Body:**  
 ```json
 {
-  "id" : 1,
   "title": "Sample Activity",
   "description": "Description of the activity",
-  "owner": "User-Name"
 }
 ```
 
