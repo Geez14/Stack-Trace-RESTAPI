@@ -2,12 +2,19 @@ package com.geez14.app;
 
 import com.geez14.app.entities.Activity;
 import com.jayway.jsonpath.DocumentContext;
+import com.jayway.jsonpath.JsonPath;
+import net.minidev.json.JSONArray;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.annotation.DirtiesContext;
+
+import java.net.URI;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,10 +23,18 @@ public class StackTraceApplicationTests {
     @Autowired
     TestRestTemplate restTemplate;
 
+    // CRUD Test -----------------------------
     @Test
     void shouldReturnActivityWhenRequested() {
-        ResponseEntity<Activity> response = restTemplate.getForEntity("/activities/100", Activity.class);
+        ResponseEntity<Activity> response = restTemplate.withBasicAuth("Mxtylish", "password1234").getForEntity("/activities/99", Activity.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        // Deserialize and check
+        Activity output = response.getBody();
+        assertThat(output).isNotNull();
+        assertThat(output.id()).isEqualTo(99);
+        assertThat(output.title()).isEqualTo("Learn Arabic");
+        assertThat(output.description()).isEqualTo("Duolingo");
+        assertThat(output.owner()).isEqualTo("Mxtylish");
     }
 
     @Test
