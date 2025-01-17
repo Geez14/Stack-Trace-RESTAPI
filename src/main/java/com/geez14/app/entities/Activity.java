@@ -1,7 +1,6 @@
 package com.geez14.app.entities;
 
-import java.util.Date;
+import org.springframework.data.annotation.Id;
 
-
-public record Activity(Long id, String title, String description, String owner) {
+public record Activity(@Id Long id, String title, String description, String owner) {
 }
