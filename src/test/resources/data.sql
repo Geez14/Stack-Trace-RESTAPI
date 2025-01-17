@@ -1,0 +1,6 @@
+INSERT INTO ACTIVITY(ID, TITLE, DESCRIPTION, OWNER)
+VALUES (99, 'Learn Arabic', 'Duolingo', 'Mxtylish');
+INSERT INTO ACTIVITY(ID, TITLE, DESCRIPTION, OWNER)
+VALUES (100, 'Learn French', 'Duolingo', 'Mxtylish');
+INSERT INTO ACTIVITY(ID, TITLE, DESCRIPTION, OWNER)
+VALUES (101, 'Learn English', 'Duolingo', 'Mxtylish');
