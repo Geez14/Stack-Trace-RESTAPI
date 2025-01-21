@@ -15,4 +15,8 @@ public interface ActivityRepository extends CrudRepository<Activity, Long>, Pagi
     Page<Activity> findAllByOwnerIgnoreCase(String owner, PageRequest pageRequest);
 
     boolean existsByIdAndOwner(Long requestId, String owner);
+
+    @Modifying
+    @Query("DELETE ACTIVITY WHERE OWNER=:owner")
+    void deleteAllByOwner(String owner);
 }
