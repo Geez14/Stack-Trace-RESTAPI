@@ -55,4 +55,10 @@ public class ActivityController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @DeleteMapping
+    private ResponseEntity<Void> deleteAllActivities(Principal principal) {
+        activityRepository.deleteAllByOwner(principal.getName());
+        return ResponseEntity.noContent().build();
+    }
 }
