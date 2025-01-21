@@ -124,4 +124,18 @@ public class StackTraceApplicationTests {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.UNAUTHORIZED);
         assertThat(response.getBody()).isNull();
     }
+
+    @Test
+    @DirtiesContext
+    public void shouldDeleteAllActivitiesOfSpecificUser() {
+        ResponseEntity<Void> response = restTemplate.withBasicAuth("Mxtylish", "password1234").exchange("/activities", HttpMethod.DELETE, HttpEntity.EMPTY, Void.class);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+
+        // check
+        ResponseEntity<String> getPageResponse = restTemplate.withBasicAuth("Mxtylish", "password1234").exchange("/activities", HttpMethod.GET, HttpEntity.EMPTY, String.class);
+        assertThat(getPageResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
+        DocumentContext documentContext = JsonPath.parse(getPageResponse.getBody());
+        JSONArray json = documentContext.read("$[*]");
+        assertThat(json.size()).isEqualTo(0);
+    }
 }
