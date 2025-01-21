@@ -69,6 +69,9 @@ The application was designed and developed using the **Steel Thread approach**, 
 #### **3. List All Activities**
 **GET** `/activities`  
 
+#### **4. Delete All Activities**
+**DELETE** `/activities`  
+
 ---
 
 ## Testing
